@@ -1,6 +1,6 @@
 namespace HttpMediator.Infrastructure.Requests
 {
-    public interface IRequest <TRequestResult>
+    public interface IRequest
     {
         
     }

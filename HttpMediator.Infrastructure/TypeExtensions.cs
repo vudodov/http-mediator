@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using HttpMediator.Infrastructure.Notifications;
+using HttpMediator.Infrastructure.Requests;
 
 namespace HttpMediator.Infrastructure
 {
@@ -10,7 +11,14 @@ namespace HttpMediator.Infrastructure
             handlerType.GetInterfaces()
                 .Any(@interface =>
                     @interface.IsGenericType
-                    && @interface.GetGenericTypeDefinition() == typeof(INotificationHandler<>)
+                    && @interface.GetGenericTypeDefinition().IsAssignableFrom(typeof(INotificationHandler<>))
                     && @interface.GetGenericArguments().Single().IsAssignableFrom(notificationType));
+
+        internal static bool IsRequestHandlerFor(this Type handlerType, Type requestType) =>
+            handlerType.GetInterfaces()
+                .Any(@interface =>
+                    @interface.IsGenericType
+                    && @interface.GetGenericTypeDefinition().IsAssignableFrom(typeof(IRequestHandler<,>))
+                    && @interface.GetGenericArguments().First().IsAssignableFrom(requestType));
     }
 }

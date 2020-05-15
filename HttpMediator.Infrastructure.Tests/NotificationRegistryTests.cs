@@ -49,30 +49,30 @@ namespace HttpMediator.Infrastructure.Tests
         [Fact]
         public void When_single_notification_registered_it_should_return()
         {
-            var isMappingFound = _registry.TryGetHandlersMapping("single-test-notification", out var mapping);
+            var isMappingFound = _registry.TryGetValue("single-test-notification", out var mapping);
             
             isMappingFound.Should().BeTrue();
             mapping.notificationType.Should().Be(typeof(SingleTestNotification));
-            mapping.notificationTypeHanlers.Should().HaveCount(1);
-            mapping.notificationTypeHanlers.Single().Should().Be(typeof(SingleTestNotificationHandler));
+            mapping.notificationHandlerTypes.Should().HaveCount(1);
+            mapping.notificationHandlerTypes.Single().Should().Be(typeof(SingleTestNotificationHandler));
         }
 
         [Fact]
         public void When_multiple_notifications_registered_it_should_return()
         {
-            var isMappingFound = _registry.TryGetHandlersMapping("multiple-test-notification", out var mapping);
+            var isMappingFound = _registry.TryGetValue("multiple-test-notification", out var mapping);
             
             isMappingFound.Should().BeTrue();
             mapping.notificationType.Should().Be(typeof(MultipleTestNotification));
-            mapping.notificationTypeHanlers.Should().HaveCount(2);
-            mapping.notificationTypeHanlers.ElementAt(0).Should().Be(typeof(MultipleTestNotificationHandler1));
-            mapping.notificationTypeHanlers.ElementAt(1).Should().Be(typeof(MultipleTestNotificationHandler2));
+            mapping.notificationHandlerTypes.Should().HaveCount(2);
+            mapping.notificationHandlerTypes.ElementAt(0).Should().Be(typeof(MultipleTestNotificationHandler1));
+            mapping.notificationHandlerTypes.ElementAt(1).Should().Be(typeof(MultipleTestNotificationHandler2));
         }
 
         [Fact]
         public void When_no_notifications_registered_it_should_return()
         {
-            var isMappingFound = _registry.TryGetHandlersMapping("no-test-notification", out var mapping);
+            var isMappingFound = _registry.TryGetValue("no-test-notification", out var mapping);
             
             isMappingFound.Should().BeFalse();
         }

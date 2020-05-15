@@ -21,17 +21,17 @@ namespace HttpMediator.Infrastructure.Notifications
             _mapping = Scan(assemblies);
         }
 
-        public bool TryGetHandlersMapping(string notificationName,
-            out (Type notificationType, IEnumerable<Type> notificationTypeHanlers) map) =>
+        public bool TryGetValue(string notificationName,
+            out (Type notificationType, IEnumerable<Type> notificationHandlerTypes) map) =>
             _mapping.TryGetValue(notificationName, out map);
 
-        public IEnumerator<(string notificationName, Type notificationType, IEnumerable<Type> notificationTypeHandlers)>
+        public IEnumerator<(string notificationName, Type notificationType, IEnumerable<Type> notificationHandlerTypes)>
             GetEnumerator() =>
             _mapping.Select(map =>
             (
                 notificationName: map.Key,
                 notificationType: map.Value.notificationType,
-                notificationHanlerTypes: map.Value.notificationHandlerTypes
+                notificationHandlerTypes: map.Value.notificationHandlerTypes
             )).GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -69,7 +69,8 @@ namespace HttpMediator.Infrastructure.Notifications
                 map => map.Key.Name.ToKebabCase(),
                 map => (
                     notificationType: map.Key,
-                    notificationTypeHandlers: map.Value.AsEnumerable()));
+                    notificationTypeHandlers: map.Value.AsEnumerable())
+            );
         }
     }
 }

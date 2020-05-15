@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace HttpMediator.Infrastructure.Requests
 {
     public interface IRequestHandler<in TRequest, TRequestResult>
-        where TRequest : IRequest<TRequestResult>
+        where TRequest : IRequest
     {
         Task<TRequestResult> HandleAsync(TRequest request, CancellationToken cancellationToken);
     }

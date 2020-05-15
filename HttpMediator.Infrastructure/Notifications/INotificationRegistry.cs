@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace HttpMediator.Infrastructure.Notifications
 {
     public interface INotificationRegistry 
-        : IEnumerable<(string notificationName, Type notificationType, IEnumerable<Type> notificationTypeHandlers)>
+        : IEnumerable<(string notificationName, Type notificationType, IEnumerable<Type> notificationHandlerTypes)>
     {
-        bool TryGetHandlersMapping(string notificationName,
-            out (Type notificationType, IEnumerable<Type> notificationTypeHanlers) map);
+        bool TryGetValue(string notificationName,
+            out (Type notificationType, IEnumerable<Type> notificationHandlerTypes) map);
     }
 }
