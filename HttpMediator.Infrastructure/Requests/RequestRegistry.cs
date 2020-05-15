@@ -1,4 +1,4 @@
-namespace HttpMediator.Infrastructure
+namespace HttpMediator.Infrastructure.Requests
 {
     public class RequestRegistry
     {

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMediator.Infrastructure", "HttpMediator.Infrastructure\HttpMediator.Infrastructure.csproj", "{5D168AA1-AF99-474D-A466-5CCB23E9D96E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMediator.Infrastructure.Tests", "HttpMediator.Infrastructure.Tests\HttpMediator.Infrastructure.Tests.csproj", "{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{5D168AA1-AF99-474D-A466-5CCB23E9D96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D168AA1-AF99-474D-A466-5CCB23E9D96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D168AA1-AF99-474D-A466-5CCB23E9D96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

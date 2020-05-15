@@ -37,8 +37,7 @@ namespace HttpMediator.Infrastructure.Notifications
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         private static IImmutableDictionary<string, (Type notificationType, IEnumerable<Type> notificationHandlerTypes)>
-            Scan(
-                IEnumerable<Assembly> assemblies)
+            Scan(IEnumerable<Assembly> assemblies)
         {
             if (!assemblies.Any())
                 throw new ArgumentException(
