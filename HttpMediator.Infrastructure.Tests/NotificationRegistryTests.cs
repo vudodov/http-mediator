@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,19 +24,19 @@ namespace HttpMediator.Infrastructure.Tests
 
         private class SingleTestNotificationHandler : INotificationHandler<SingleTestNotification>
         {
-            public Task HandleAsync(SingleTestNotification notification, CancellationToken cancellationToken) =>
+            public Task HandleAsync(SingleTestNotification notification, Guid notificationBatchId, CancellationToken cancellationToken) =>
                 Task.CompletedTask;
         }
 
         private class MultipleTestNotificationHandler1 : INotificationHandler<MultipleTestNotification>
         {
-            public Task HandleAsync(MultipleTestNotification notification, CancellationToken cancellationToken) =>
+            public Task HandleAsync(MultipleTestNotification notification, Guid notificationBatchId, CancellationToken cancellationToken) =>
                 Task.CompletedTask;
         }
         
         private class MultipleTestNotificationHandler2 : INotificationHandler<MultipleTestNotification>
         {
-            public Task HandleAsync(MultipleTestNotification notification, CancellationToken cancellationToken) =>
+            public Task HandleAsync(MultipleTestNotification notification, Guid notificationBatchId, CancellationToken cancellationToken) =>
                 Task.CompletedTask;
         }
 

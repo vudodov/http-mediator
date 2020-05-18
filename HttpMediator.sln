@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMediator.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMediator.Infrastructure.Tests", "HttpMediator.Infrastructure.Tests\HttpMediator.Infrastructure.Tests.csproj", "{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMediator.MediatorMiddleware", "HttpMediator.MediatorMiddleware\HttpMediator.MediatorMiddleware.csproj", "{8CC894F6-A677-4786-B5DF-8CAEED12E0C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{27C27C6F-A3C9-4FF5-BE8B-B07D5C02FBCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMediator.MediatorMiddleware.Tests", "HttpMediator.MediatorMiddleware.Tests\HttpMediator.MediatorMiddleware.Tests.csproj", "{56330B22-D621-4E1E-9B14-6E512A70CA4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC894F6-A677-4786-B5DF-8CAEED12E0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC894F6-A677-4786-B5DF-8CAEED12E0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC894F6-A677-4786-B5DF-8CAEED12E0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC894F6-A677-4786-B5DF-8CAEED12E0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56330B22-D621-4E1E-9B14-6E512A70CA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56330B22-D621-4E1E-9B14-6E512A70CA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56330B22-D621-4E1E-9B14-6E512A70CA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56330B22-D621-4E1E-9B14-6E512A70CA4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E3D7E67-1875-4917-9C11-F3E2D7BF1E34} = {27C27C6F-A3C9-4FF5-BE8B-B07D5C02FBCF}
+		{56330B22-D621-4E1E-9B14-6E512A70CA4E} = {27C27C6F-A3C9-4FF5-BE8B-B07D5C02FBCF}
 	EndGlobalSection
 EndGlobal
