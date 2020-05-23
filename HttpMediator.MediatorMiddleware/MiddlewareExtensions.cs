@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HttpMediator.MediatorMiddleware
 {
-    public static class Extensions
+    public static class MiddlewareExtensions
     {
         public static IApplicationBuilder UseHttpMediatorNotifications(this IApplicationBuilder builder)
             => builder.UseMiddleware<NotificationsMiddleware>();

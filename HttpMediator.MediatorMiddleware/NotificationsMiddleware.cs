@@ -14,7 +14,7 @@ namespace HttpMediator.MediatorMiddleware
         private readonly INotificationRegistry _registry;
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
-        private const string notificationPath = "mediator-notifications";
+        private const string notificationPathIdentifier = "mediator-notifications";
 
         private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
         {
@@ -34,15 +34,15 @@ namespace HttpMediator.MediatorMiddleware
 
         public async Task InvokeAsync(HttpContext httpContext)
         {
-            var (middlewareIdentifier, notificationName) = DecomposePath(httpContext.Request.Path.Value);
+            var (middlewareIdentifier, notificationName) = httpContext.Request.Path.DecomposePath();
 
             switch (middlewareIdentifier)
             {
-                case notificationPath when HttpMethods.IsPost(httpContext.Request.Method) &&
+                case notificationPathIdentifier when HttpMethods.IsPost(httpContext.Request.Method) &&
                                            !string.IsNullOrWhiteSpace(notificationName):
                     await ExecuteNotifications(httpContext, notificationName);
                     break;
-                case notificationPath when HttpMethods.IsGet(httpContext.Request.Method) &&
+                case notificationPathIdentifier when HttpMethods.IsGet(httpContext.Request.Method) &&
                                            string.IsNullOrWhiteSpace(notificationName):
                     //TODO: return all possible notifications
                     break;
@@ -74,12 +74,6 @@ namespace HttpMediator.MediatorMiddleware
                         .ToArray(), 
                     cancellationToken);
             }
-        }
-
-        private static (string middlewareIdentifier, string notificationName) DecomposePath(string path)
-        {
-            var pathParts = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
-            return (pathParts[0], pathParts[1]);
         }
     }
 }
