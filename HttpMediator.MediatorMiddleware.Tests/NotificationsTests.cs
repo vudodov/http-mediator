@@ -28,7 +28,7 @@ namespace HttpMediator.MediatorMiddleware.Tests
             
             var middleware = new NotificationsMiddleware(async _ => { }, registryMock.Object, Mock.Of<ILoggerFactory>());
             
-            var httpContext  = await notificationName.ConstructContextAndInvoke(async ctx =>
+            var httpContext  = await notificationName.InvokeNotificationMiddleware(async ctx =>
             {
                 SingleNotificationHandler.ExecutionCounter = 0;
                 await middleware.InvokeAsync(ctx);
@@ -54,7 +54,7 @@ namespace HttpMediator.MediatorMiddleware.Tests
             
             var middleware = new NotificationsMiddleware(async _ => { }, registryMock.Object, Mock.Of<ILoggerFactory>());
             
-            var httpContext  = await notificationName.ConstructContextAndInvoke(async ctx =>
+            var httpContext  = await notificationName.InvokeNotificationMiddleware(async ctx =>
             {
                 MultipleNotificationHandler_1.ExecutionCounter = 0;
                 MultipleNotificationHandler_2.ExecutionCounter = 0;

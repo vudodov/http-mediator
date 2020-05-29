@@ -24,14 +24,14 @@ namespace HttpMediator.MediatorMiddleware
             IgnoreNullValues = true,
             PropertyNameCaseInsensitive = false
         };
-        
+
         public RequestsMiddleware(RequestDelegate next, IRequestRegistry registry, ILoggerFactory loggerFactory)
         {
             _next = next;
             _registry = registry;
             _logger = loggerFactory.CreateLogger<RequestsMiddleware>();
         }
-        
+
         public async Task InvokeAsync(HttpContext httpContext)
         {
             var (middlewareIdentifier, requestName) = httpContext.Request.Path.DecomposePath();
@@ -40,8 +40,9 @@ namespace HttpMediator.MediatorMiddleware
             {
                 case requestPathIdentifier when HttpMethods.IsPost(httpContext.Request.Method) &&
                                                 !string.IsNullOrWhiteSpace(requestName):
-                    var requestResponse = await ExecuteRequest(httpContext, requestName);
-                    SetHttpResponse(httpContext, requestResponse);
+                    var requestId = Guid.NewGuid();
+                    var requestResponse = await ExecuteRequest(httpContext, requestName, requestId);
+                    SetHttpResponse(httpContext, requestResponse, requestId);
                     break;
                 case requestPathIdentifier when HttpMethods.IsGet(httpContext.Request.Method) &&
                                                 string.IsNullOrWhiteSpace(requestName):
@@ -52,34 +53,31 @@ namespace HttpMediator.MediatorMiddleware
                     break;
             }
         }
-        
-        private async Task<object> ExecuteRequest(HttpContext httpContext, string requestName)
+
+        private async Task<object> ExecuteRequest(HttpContext httpContext, string requestName, Guid requestId)
         {
             if (_registry.TryGetValue(requestName, out var requestTypeInformation))
             {
                 var (requestType, requestTypeHandler) = requestTypeInformation;
-                var requestId = Guid.NewGuid();
                 var cancellationToken = httpContext.RequestAborted;
                 var request = await httpContext.Request.BodyReader.DeserializeBodyAsync(
                     requestType,
                     _jsonSerializerOptions,
                     cancellationToken);
 
-                return await requestTypeHandler.HandleRequest(request, requestId, 
+                return await requestTypeHandler.HandleRequest(request, requestId,
                     httpContext.RequestServices, cancellationToken);
             }
-            else
-            {
-                throw new NullReferenceException($"Mediator request or request handler {requestName} was not found");
-            }
+
+            throw new NullReferenceException($"Mediator request or request handler {requestName} was not found");
         }
 
-        private void SetHttpResponse(HttpContext httpContext, object requestResponse)
+        private void SetHttpResponse(HttpContext httpContext, object requestResponse, Guid requestId)
         {
             httpContext.Response.StatusCode = (int) HttpStatusCode.OK;
             httpContext.Response.ContentType = MediaTypeNames.Application.Json;
             httpContext.Response.BodyWriter.Write(
-                JsonSerializer.SerializeToUtf8Bytes(requestResponse, _jsonSerializerOptions));
+                JsonSerializer.SerializeToUtf8Bytes(new {requestId, result = requestResponse}, _jsonSerializerOptions));
             httpContext.Response.BodyWriter.Complete();
         }
     }

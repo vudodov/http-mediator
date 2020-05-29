@@ -16,7 +16,7 @@ namespace HttpMediator.Infrastructure.Tests
         
         private class TestRequestHandler : IRequestHandler<TestRequest, string>
         {
-            public Task<string> HandleAsync(TestRequest request, CancellationToken cancellationToken) =>
+            public Task<string> HandleAsync(TestRequest request, Guid requestId, CancellationToken cancellationToken) =>
                 Task.FromResult("Done");
         }
 
