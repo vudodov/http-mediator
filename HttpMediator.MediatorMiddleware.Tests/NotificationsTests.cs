@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
 using HttpMediator.Infrastructure.Notifications;
@@ -35,6 +37,14 @@ namespace HttpMediator.MediatorMiddleware.Tests
             });
 
             httpContext.Response.StatusCode.Should().Be((int) HttpStatusCode.OK);
+            
+            var bodyContent = await new StreamReader(httpContext.Response.Body).ReadToEndAsync();
+            
+            var jsonBody = JsonDocument.Parse(bodyContent).RootElement;
+            jsonBody
+                .GetProperty("notificationBatchId").GetGuid()
+                .Should().NotBeEmpty();
+            
             SingleNotificationHandler.ExecutionCounter.Should().Be(1);
         }
         

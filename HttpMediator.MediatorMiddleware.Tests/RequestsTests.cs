@@ -42,7 +42,7 @@ namespace HttpMediator.MediatorMiddleware.Tests
                 .GetProperty("requestId").GetGuid()
                 .Should().NotBeEmpty();
 
-            var resultJson = jsonBody
+            jsonBody
                 .GetProperty("result").GetString()
                 .Should().Be("simple request result");
         }
@@ -74,7 +74,7 @@ namespace HttpMediator.MediatorMiddleware.Tests
                 .GetProperty("requestId").GetGuid()
                 .Should().NotBeEmpty();
 
-            var resultJson = jsonBody
+            jsonBody
                 .GetProperty("result").GetString()
                 .Should().Be("test data for simple data request");
         }
