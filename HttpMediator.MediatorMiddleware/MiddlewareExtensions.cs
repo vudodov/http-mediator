@@ -13,9 +13,7 @@ namespace HttpMediator.MediatorMiddleware
         
         public static IApplicationBuilder UseHttpMediatorRequests(this IApplicationBuilder builder)
             => builder.UseMiddleware<RequestsMiddleware>();
-
-
-
+        
         public static void AddHttpMediator(this IServiceCollection serviceCollection, params Assembly[] assemblies)
         {
             assemblies = assemblies.Length == 0 ? new[] {Assembly.GetCallingAssembly()} : assemblies;
