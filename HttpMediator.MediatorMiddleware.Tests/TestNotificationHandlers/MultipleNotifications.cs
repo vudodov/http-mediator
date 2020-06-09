@@ -14,7 +14,7 @@ namespace HttpMediator.MediatorMiddleware.Tests.TestNotificationHandlers
     {
         public static short ExecutionCounter { get; set; }
         
-        public Task HandleAsync(MultipleNotifications notification, Guid notificationBatchId, CancellationToken cancellationToken)
+        public Task HandleAsync(MultipleNotifications notification, Guid notificationId, CancellationToken cancellationToken)
         {
             ExecutionCounter++;
             
@@ -26,7 +26,7 @@ namespace HttpMediator.MediatorMiddleware.Tests.TestNotificationHandlers
     {
         public static short ExecutionCounter { get; set; }
         
-        public Task HandleAsync(MultipleNotifications notification, Guid notificationBatchId, CancellationToken cancellationToken)
+        public Task HandleAsync(MultipleNotifications notification, Guid notificationId, CancellationToken cancellationToken)
         {
             ExecutionCounter++;
             

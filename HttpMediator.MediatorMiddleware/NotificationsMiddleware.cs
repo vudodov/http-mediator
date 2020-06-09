@@ -16,7 +16,7 @@ namespace HttpMediator.MediatorMiddleware
         private readonly INotificationRegistry _registry;
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
-        private const string notificationPathIdentifier = "mediator-notifications";
+        private const string notificationPathIdentifier = "mediator-notification";
 
         private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
         {
@@ -42,9 +42,9 @@ namespace HttpMediator.MediatorMiddleware
             {
                 case notificationPathIdentifier when HttpMethods.IsPost(httpContext.Request.Method) &&
                                                      !string.IsNullOrWhiteSpace(notificationName):
-                    var notificationBatchId = Guid.NewGuid();
-                    await ExecuteNotifications(httpContext, notificationName, notificationBatchId);
-                    SetHttpResponse(httpContext, notificationBatchId);
+                    var notificationId = Guid.NewGuid();
+                    await ExecuteNotifications(httpContext, notificationName, notificationId);
+                    SetHttpResponse(httpContext, notificationId);
                     break;
                 case notificationPathIdentifier when HttpMethods.IsGet(httpContext.Request.Method) &&
                                                      string.IsNullOrWhiteSpace(notificationName):
@@ -57,7 +57,7 @@ namespace HttpMediator.MediatorMiddleware
         }
 
         private async Task ExecuteNotifications(HttpContext httpContext, string notificationName,
-            Guid notificationBatchId)
+            Guid notificationId)
         {
             if (_registry.TryGetValue(notificationName, out var handlersTypeInformation))
             {
@@ -72,7 +72,7 @@ namespace HttpMediator.MediatorMiddleware
                         .Select(notificationHandlerType =>
                             notificationHandlerType.HandleNotification(
                                 notification,
-                                notificationBatchId,
+                                notificationId,
                                 httpContext.RequestServices,
                                 cancellationToken))
                         .ToArray(),
@@ -80,12 +80,12 @@ namespace HttpMediator.MediatorMiddleware
             }
         }
 
-        private void SetHttpResponse(HttpContext httpContext, Guid notificationBatchId)
+        private void SetHttpResponse(HttpContext httpContext, Guid notificationId)
         {
             httpContext.Response.StatusCode = (int) HttpStatusCode.OK;
             httpContext.Response.ContentType = MediaTypeNames.Application.Json;
             httpContext.Response.BodyWriter.Write(
-                JsonSerializer.SerializeToUtf8Bytes(new {notificationBatchId}, _jsonSerializerOptions));
+                JsonSerializer.SerializeToUtf8Bytes(new {notificationId}, _jsonSerializerOptions));
             httpContext.Response.BodyWriter.Complete();
         }
     }

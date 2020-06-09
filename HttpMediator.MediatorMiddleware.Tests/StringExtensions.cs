@@ -12,7 +12,7 @@ namespace HttpMediator.MediatorMiddleware.Tests
     {
         internal static async Task<HttpContext> InvokeNotificationMiddleware(this string notificationName,
             Func<HttpContext, Task> invokeAsync, string requestJson = null) =>
-            await ConstructContextAndInvoke("mediator-notifications", notificationName, requestJson, invokeAsync);
+            await ConstructContextAndInvoke("mediator-notification", notificationName, requestJson, invokeAsync);
 
         internal static async Task<HttpContext> InvokeRequestMiddleware(this string notificationName,
             Func<HttpContext, Task> invokeAsync, string requestJson = null) =>

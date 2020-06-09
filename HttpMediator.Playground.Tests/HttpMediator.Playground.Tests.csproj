@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="5.10.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.4" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
         <PackageReference Include="xunit" Version="2.4.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
@@ -14,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HttpMediator.Playground.WebApp\HttpMediator.Playground.WebApp.csproj" />
+      <ProjectReference Include="..\HttpMediator.Playground.WebApplication\HttpMediator.Playground.WebApplication.csproj" />
     </ItemGroup>
 
 </Project>

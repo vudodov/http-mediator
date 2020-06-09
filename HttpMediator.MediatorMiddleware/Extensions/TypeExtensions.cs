@@ -9,7 +9,7 @@ namespace HttpMediator.MediatorMiddleware
     internal static class TypeExtensions
     {
         internal static Task HandleNotification(this Type notificationHandlerType, object? notification,
-            Guid notificationBatchId, IServiceProvider serviceProvider, CancellationToken cancellationToken)
+            Guid notificationId, IServiceProvider serviceProvider, CancellationToken cancellationToken)
         {
             object notificationHandlerInstance =
                 ActivatorUtilities.CreateInstance(serviceProvider, notificationHandlerType);
@@ -18,7 +18,7 @@ namespace HttpMediator.MediatorMiddleware
             return handleAsyncMethod.InvokeAsync(
                 notificationHandlerInstance,
                 notification!,
-                notificationBatchId,
+                notificationId,
                 cancellationToken);
         }
 

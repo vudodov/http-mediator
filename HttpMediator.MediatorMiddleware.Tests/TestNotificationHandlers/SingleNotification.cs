@@ -14,7 +14,7 @@ namespace HttpMediator.MediatorMiddleware.Tests.TestNotificationHandlers
     {
         public static short ExecutionCounter { get; set; }
         
-        public Task HandleAsync(SingleNotification notification, Guid notificationBatchId, CancellationToken cancellationToken)
+        public Task HandleAsync(SingleNotification notification, Guid notificationId, CancellationToken cancellationToken)
         {
             ExecutionCounter++;
             return Task.CompletedTask;
