@@ -2,6 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <PackageId>http-mediator-infrastructure</PackageId>
+        <Authors>Valerii Udodov &lt;vudodov@gmail.com&gt;</Authors>
+        <RepositoryUrl>https://github.com/vudodov/http-mediator</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>http-mediator mediator</PackageTags>
     </PropertyGroup>
 
 </Project>

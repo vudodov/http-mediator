@@ -42,7 +42,7 @@ namespace HttpMediator.MediatorMiddleware.Tests
             
             var jsonBody = JsonDocument.Parse(bodyContent).RootElement;
             jsonBody
-                .GetProperty("notificationBatchId").GetGuid()
+                .GetProperty("notificationId").GetGuid()
                 .Should().NotBeEmpty();
             
             SingleNotificationHandler.ExecutionCounter.Should().Be(1);

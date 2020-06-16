@@ -4,6 +4,13 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <Nullable>enable</Nullable>
         <OutputType>Library</OutputType>
+        <PackageId>http-mediator</PackageId>
+        <Title>HTTP Mediator Middleware</Title>
+        <Description>Simple, easy-to-hook-up mediator implementation that works natively through the HTTP</Description>
+        <PackageProjectUrl>https://github.com/vudodov/http-mediator</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/vudodov/http-mediator</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>http-mediator mediator-pattern mediator</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
