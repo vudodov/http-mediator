@@ -11,6 +11,10 @@
         <RepositoryUrl>https://github.com/vudodov/http-mediator</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>http-mediator mediator-pattern mediator</PackageTags>
+        <PackageLicenseUrl>MIT</PackageLicenseUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
