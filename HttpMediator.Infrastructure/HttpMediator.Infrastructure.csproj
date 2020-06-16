@@ -7,6 +7,10 @@
         <RepositoryUrl>https://github.com/vudodov/http-mediator</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>http-mediator mediator</PackageTags>
+        <PackageLicenseUrl>MIT</PackageLicenseUrl>
+        <PackageVersion>1.0.1</PackageVersion>
+        <Title>HTTP Mediator Infrastructure</Title>
+        <Description>Supporting package for the HTTP Mediator Middleware</Description>
     </PropertyGroup>
 
 </Project>
