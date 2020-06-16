@@ -1,3 +1,5 @@
+[![Nuget](https://img.shields.io/nuget/v/http-mediator)](https://www.nuget.org/packages/http-mediator/)
+
 # HTTP Mediator
 Simple, easy-to-hook-up mediator implementation.
 
