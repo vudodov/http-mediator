@@ -14,7 +14,7 @@
         <PackageLicenseUrl>MIT</PackageLicenseUrl>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
