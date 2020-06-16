@@ -37,3 +37,4 @@ msbuild.wrn
 PositionDescriptionPlayground.code-workspace
 
 /.vs/*
+/.ionide/
