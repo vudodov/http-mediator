@@ -15,6 +15,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageVersion>1.0.1</PackageVersion>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
