@@ -8,9 +8,12 @@
         <RepositoryType>git</RepositoryType>
         <PackageTags>http-mediator mediator</PackageTags>
         <PackageLicenseUrl>MIT</PackageLicenseUrl>
-        <PackageVersion>1.0.2</PackageVersion>
+        <PackageVersion>1.0.3</PackageVersion>
         <Title>HTTP Mediator Infrastructure</Title>
         <Description>Supporting package for the HTTP Mediator Middleware</Description>
+        <IsPackable>true</IsPackable>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
 </Project>
